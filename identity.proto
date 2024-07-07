@@ -1,5 +1,4 @@
 syntax = "proto3";
-## hell
 
 package identity;
 
