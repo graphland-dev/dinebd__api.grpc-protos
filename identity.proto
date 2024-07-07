@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package identity;
+
+service UsersService {
+  rpc GetUser(FindObjectRequest) returns (UserDto) {}
+  rpc CreateOrUpdateUser(CreateOrUpdateUserRequest) returns (UserDto) {}
+}
+
+enum UserRole{
+  super_admin = 0;
+  customer = 1;
+  vendor = 2;
+  general_manager = 3;
+  administrative_officer = 4;
+  rider = 5;
+}
+
+message FindObjectRequest {
+  string key = 1;
+  string value = 2;
+}
+
+message UserDto {
+  string _id = 1;
+  string name = 2;
+  string email = 3;
+  string phone_number = 4;
+  repeated UserRole roles = 5;
+  string password = 6;
+}
+
+enum ERoleUpdationType{
+  union = 0;
+  overwrite = 1;
+}
+
+message CreateOrUpdateUserRequest {
+  FindObjectRequest where = 1;
+  UserDto payload = 2;
+  ERoleUpdationType roleUpdationType = 3;
+}
