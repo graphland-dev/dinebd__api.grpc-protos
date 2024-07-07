@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package identity;
 
-service UsersService {
+service GRPC_Identity__UserService {
   rpc GetUser(FindObjectRequest) returns (UserDto) {}
   rpc CreateOrUpdateUser(CreateOrUpdateUserRequest) returns (UserDto) {}
 }
